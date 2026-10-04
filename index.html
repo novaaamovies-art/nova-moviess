@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NOVA MOVIES</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#07070b;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+/* NAVBAR */
+nav{
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:10;
+
+    background:rgba(7,7,11,.75);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#8b5cf6;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    margin:0 12px;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:white;
+}
+
+/* HERO */
+.hero{
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    padding:120px 7% 70px;
+
+    background:
+    linear-gradient(90deg,#07070b 10%,rgba(7,7,11,.75),rgba(7,7,11,.15)),
+    linear-gradient(0deg,#07070b 5%,transparent 40%),
+    url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=90");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    max-width:600px;
+}
+
+.badge{
+    color:#c4b5fd;
+    background:rgba(139,92,246,.15);
+    border:1px solid rgba(139,92,246,.3);
+    padding:8px 14px;
+    border-radius:30px;
+    display:inline-block;
+    margin-bottom:20px;
+    font-size:12px;
+}
+
+h1{
+    font-size:clamp(50px,8vw,85px);
+    line-height:.95;
+    letter-spacing:-4px;
+    margin-bottom:20px;
+}
+
+h1 span{
+    color:#8b5cf6;
+}
+
+.hero p{
+    color:#bbb;
+    line-height:1.7;
+    margin-bottom:28px;
+}
+
+button{
+    padding:13px 22px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-right:8px;
+}
+
+.watch{
+    background:#8b5cf6;
+    color:white;
+}
+
+.more{
+    background:rgba(255,255,255,.1);
+    color:white;
+}
+
+/* CONTENT */
+.container{
+    padding:45px 6%;
+}
+
+.title{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.title h2{
+    font-size:25px;
+}
+
+.title a{
+    color:#a78bfa;
+    text-decoration:none;
+}
+
+/* MOVIES */
+.movies{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+}
+
+.movie{
+    background:#111118;
+    border-radius:15px;
+    overflow:hidden;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.movie:hover{
+    transform:translateY(-7px);
+}
+
+.movie img{
+    width:100%;
+    aspect-ratio:2/3;
+    object-fit:cover;
+}
+
+.movie-info{
+    padding:12px;
+}
+
+.movie-info h3{
+    font-size:15px;
+}
+
+.movie-info p{
+    color:#777;
+    font-size:12px;
+    margin-top:6px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+    .movies{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    nav{
+        padding:0 18px;
+    }
+
+    nav a{
+        display:none;
+    }
+
+    .logo{
+        font-size:19px;
+    }
+
+    .hero{
+        min-height:620px;
+        padding:120px 22px 60px;
+    }
+
+    h1{
+        font-size:55px;
+    }
+
+    .container{
+        padding:35px 18px;
+    }
+
+    .movies{
+        grid-template-columns:repeat(2,1fr);
+        gap:13px;
+    }
+
+}
+
+footer{
+    text-align:center;
+    padding:35px;
+    color:#666;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+</style>
+</head>
+
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        NOVA<span>MOVIES</span>
+    </div>
+
+    <div>
+        <a href="#">Home</a>
+        <a href="#movies">Movies</a>
+        <a href="#">Genres</a>
+    </div>
+
+</nav>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            NOVA MOVIES • CINEMA
+        </div>
+
+        <h1>
+            CINEMA<br>
+            <span>WITHOUT LIMITS.</span>
+        </h1>
+
+        <p>
+            Discover amazing movies, explore new worlds
+            and enjoy your favorite stories in one place.
+        </p>
+
+        <button class="watch">
+            ▶ Watch Now
+        </button>
+
+        <button class="more">
+            + My List
+        </button>
+
+    </div>
+
+</section>
+
+
+<main class="container">
+
+    <div class="title">
+        <h2>Trending Movies</h2>
+        <a href="#">View all →</a>
+    </div>
+
+
+    <div class="movies" id="movies">
+
+
+        <div class="movie">
+
+            <img src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg">
+
+            <div class="movie-info">
+                <h3>Interstellar</h3>
+                <p>2014 • Sci-Fi</p>
+            </div>
+
+        </div>
+
+
+        <div class="movie">
+
+            <img src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg">
+
+            <div class="movie-info">
+                <h3>Dune: Part Two</h3>
+                <p>2024 • Fantasy</p>
+            </div>
+
+        </div>
+
+
+        <div class="movie">
+
+            <img src="https://image.tmdb.org/t/p/w500/kyeqWdyUXW608qlYkRqosgbbJyK.jpg">
+
+            <div class="movie-info">
+                <h3>Avatar</h3>
+                <p>2009 • Adventure</p>
+            </div>
+
+        </div>
+
+
+        <div class="movie">
+
+            <img src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg">
+
+            <div class="movie-info">
+                <h3>The Dark Knight</h3>
+                <p>2008 • Action</p>
+            </div>
+
+        </div>
+
+
+        <div class="movie">
+
+            <img src="https://image.tmdb.org/t/p/w500/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg">
+
+            <div class="movie-info">
+                <h3>Gladiator</h3>
+                <p>2000 • Drama</p>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<footer>
+    © 2026 NOVA MOVIES
+</footer>
+
+</body>
+</html>
