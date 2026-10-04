@@ -1,22 +1,74 @@
 <!DOCTYPE html>
 <html lang="ku" dir="rtl">
 <head>
-<meta name="google-site-verification" content="PWzwYuquSwneGHXx22qmaAvWj0T29fXWioNl54_ETjQ" />
+
+<meta name="google-site-verification" content="PWzwYuquSwneGHXx22qmaAvWj0T29fXWioNl54_ETjQ">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVA MOVIES</title>
+
+<!-- SEO -->
+<title>NOVA MOVIES | فیلم و سینەما</title>
+
+<meta name="description" content="NOVA MOVIES — جیهانی فیلم و سینەما. فیلمە جۆراوجۆرەکان لە یەک شوێن بدۆزەرەوە و چێژ لە چیرۆکە دڵخوازەکانت ببینە.">
+
+<meta name="robots" content="index, follow">
+
+<meta name="author" content="NOVA MOVIES">
+
+<meta name="theme-color" content="#07070b">
+
+<meta name="keywords" content="NOVA MOVIES, فیلم, فیلمەکان, سینەما, فیلمی کوردی, Kurdish Movies, Movies, Cinema">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://novaaamovies-art.github.io/nova-moviess/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="NOVA MOVIES | فیلم و سینەما">
+<meta property="og:description" content="NOVA MOVIES — جیهانی فیلم و سینەما لە یەک شوێن.">
+<meta property="og:url" content="https://novaaamovies-art.github.io/nova-moviess/">
+<meta property="og:site_name" content="NOVA MOVIES">
+<meta property="og:locale" content="ku">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NOVA MOVIES | فیلم و سینەما">
+<meta name="twitter:description" content="NOVA MOVIES — جیهانی فیلم و سینەما لە یەک شوێن.">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "NOVA MOVIES",
+  "alternateName": "NOVA Movies",
+  "url": "https://novaaamovies-art.github.io/nova-moviess/",
+  "description": "NOVA MOVIES — جیهانی فیلم و سینەما لە یەک شوێن.",
+  "inLanguage": "ku"
+}
+</script>
+
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     background:#07070b;
     color:#fff;
     font-family:Tahoma, Arial, sans-serif;
 }
+
 /* NAVBAR */
+
 nav{
     height:72px;
     display:flex;
@@ -32,6 +84,7 @@ nav{
     backdrop-filter:blur(20px);
     border-bottom:1px solid rgba(255,255,255,.08);
 }
+
 .logo{
     font-family:Arial,sans-serif;
     font-size:24px;
@@ -39,24 +92,31 @@ nav{
     letter-spacing:2px;
     direction:ltr;
 }
+
 .logo span{
     color:#8b5cf6;
 }
+
 /* NAV LINKS */
+
 .nav-links{
     display:flex;
     gap:28px;
 }
+
 .nav-links a{
     color:#aaa;
     text-decoration:none;
     font-size:14px;
     transition:.2s;
 }
+
 .nav-links a:hover{
     color:#fff;
 }
+
 /* SEARCH */
+
 .search{
     width:190px;
     padding:10px 15px;
@@ -67,29 +127,41 @@ nav{
     outline:none;
     text-align:right;
 }
+
 .search::placeholder{
     color:#888;
 }
+
 /* HERO */
+
 .hero{
     min-height:680px;
     display:flex;
     align-items:center;
     padding:130px 7% 80px;
+
     background:
-    linear-gradient(90deg,
+    linear-gradient(
+        90deg,
         #07070b 8%,
         rgba(7,7,11,.82) 42%,
         rgba(7,7,11,.15) 100%
     ),
-    linear-gradient(0deg,#07070b 3%,transparent 40%),
+    linear-gradient(
+        0deg,
+        #07070b 3%,
+        transparent 40%
+    ),
     url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=90");
+
     background-size:cover;
     background-position:center;
 }
+
 .hero-content{
     max-width:620px;
 }
+
 .badge{
     display:inline-block;
     color:#c4b5fd;
@@ -100,6 +172,7 @@ nav{
     margin-bottom:20px;
     font-size:12px;
 }
+
 .hero h1{
     font-family:Arial,sans-serif;
     direction:ltr;
@@ -109,9 +182,11 @@ nav{
     letter-spacing:-4px;
     margin-bottom:20px;
 }
+
 .hero h1 span{
     color:#8b5cf6;
 }
+
 .hero p{
     color:#bbb;
     line-height:2;
@@ -119,11 +194,14 @@ nav{
     margin-bottom:28px;
     max-width:560px;
 }
+
 /* BUTTONS */
+
 .buttons{
     display:flex;
     gap:10px;
 }
+
 button{
     border:none;
     padding:13px 22px;
@@ -132,40 +210,50 @@ button{
     font-family:Tahoma,Arial,sans-serif;
     font-weight:bold;
 }
+
 .watch{
     background:#8b5cf6;
     color:#fff;
 }
+
 .more{
     background:rgba(255,255,255,.1);
     color:#fff;
     border:1px solid rgba(255,255,255,.12);
 }
+
 /* CONTENT */
+
 .container{
     padding:50px 6%;
 }
+
 .section-title{
     display:flex;
     align-items:center;
     justify-content:space-between;
     margin-bottom:22px;
 }
+
 .section-title h2{
     font-size:24px;
 }
+
 .section-title a{
     color:#a78bfa;
     text-decoration:none;
     font-size:13px;
 }
+
 /* GENRES */
+
 .genres{
     display:flex;
     gap:10px;
     overflow-x:auto;
     padding-bottom:10px;
 }
+
 .genre{
     flex-shrink:0;
     padding:11px 19px;
@@ -176,16 +264,20 @@ button{
     cursor:pointer;
     transition:.2s;
 }
+
 .genre:hover{
     background:#8b5cf6;
     color:#fff;
 }
+
 /* MOVIES */
+
 .movies{
     display:grid;
     grid-template-columns:repeat(5,1fr);
     gap:18px;
 }
+
 .movie{
     position:relative;
     overflow:hidden;
@@ -194,30 +286,37 @@ button{
     cursor:pointer;
     transition:.3s;
 }
+
 .movie:hover{
     transform:translateY(-7px);
 }
+
 .movie img{
     width:100%;
     aspect-ratio:2/3;
     object-fit:cover;
     display:block;
 }
+
 .movie-info{
     padding:12px;
 }
+
 .movie-info h3{
     font-size:15px;
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
 }
+
 .movie-info p{
     margin-top:6px;
     color:#777;
     font-size:12px;
 }
+
 /* RATING */
+
 .rating{
     position:absolute;
     top:9px;
@@ -229,50 +328,9 @@ button{
     font-family:Arial,sans-serif;
     font-size:11px;
 }
-/* VIDEO MODAL */
-.video-modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    z-index:999;
-    background:rgba(0,0,0,.92);
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-.video-box{
-    width:min(1000px,95vw);
-    background:#111118;
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:18px;
-    padding:15px;
-    box-shadow:0 20px 80px rgba(0,0,0,.7);
-}
-.video-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:12px;
-}
-.video-header h2{
-    font-size:18px;
-}
-.close-video{
-    background:rgba(255,255,255,.1);
-    color:#fff;
-    font-size:18px;
-    width:40px;
-    height:40px;
-    padding:0;
-}
-#moviePlayer{
-    width:100%;
-    max-height:75vh;
-    background:#000;
-    border-radius:12px;
-    display:block;
-}
+
 /* FOOTER */
+
 footer{
     margin-top:60px;
     padding:35px 6%;
@@ -281,288 +339,451 @@ footer{
     color:#666;
     font-size:13px;
 }
+
 /* MOBILE */
+
 @media(max-width:900px){
+
     .nav-links{
         display:none;
     }
+
     .movies{
         grid-template-columns:repeat(3,1fr);
     }
+
     .search{
         width:150px;
     }
 }
+
 @media(max-width:600px){
+
     nav{
         padding:0 18px;
     }
+
     .logo{
         font-size:19px;
     }
+
     .search{
         width:130px;
         font-size:11px;
     }
+
     .hero{
         min-height:620px;
         padding:125px 22px 60px;
         background-position:center;
     }
+
     .hero h1{
         font-size:52px;
     }
+
     .hero p{
         font-size:14px;
     }
+
     .container{
         padding:35px 18px;
     }
+
     .movies{
         grid-template-columns:repeat(2,1fr);
         gap:13px;
     }
+
     .movie-info{
         padding:9px;
     }
+
     .movie-info h3{
         font-size:13px;
     }
-    .video-box{
-        width:100%;
-        padding:10px;
-    }
 }
+
 </style>
 </head>
+
 <body>
+
 <!-- NAVBAR -->
+
 <nav>
+
     <div class="logo">
         NOVA<span>MOVIES</span>
     </div>
-<div class="nav-links">
-    <a href="#">سەرەتا</a>
-    <a href="#movies">فیلمەکان</a>
-    <a href="#genres">جۆرەکان</a>
-</div>
-<input
-    class="search"
-    id="search"
-    type="text"
-    placeholder="گەڕان بە ناوی فیلم..."
-    onkeyup="searchMovies()"
->
-</nav>
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-content">
-    <div class="badge">
-        NOVA MOVIES • سینەما
-    </div>
-    <h1>
-        سینەما<br>
-        <span>بێ سنوور.</span>
-    </h1>
-    <p>
-        باشترین فیلمەکان بدۆزەرەوە، جیهانە نوێکان
-        بکەرەوە و چێژ لە چیرۆکە دڵخوازەکانت ببینە
-        لە یەک شوێن.
-    </p>
-    <div class="buttons">
-        <button class="watch" onclick="openMovie()">
-            ▶ ئێستا سەیری بکە
-        </button>
-        <button class="more">
-            ＋ لیستی من
-        </button>
-    </div>
-</div>
-</section>
-<!-- MAIN -->
-<main class="container">
-<!-- GENRES -->
-<section id="genres">
-    <div class="section-title">
-        <h2>جۆرەکان</h2>
-    </div>
-    <div class="genres">
-        <div class="genre">ئاکشن</div>
-        <div class="genre">سەرکێشی</div>
-        <div class="genre">فانتازی</div>
-        <div class="genre">دراما</div>
-        <div class="genre">ترسناک</div>
-        <div class="genre">کۆمیدی</div>
-        <div class="genre">زانستی-خەیاڵی</div>
-    </div>
-</section>
-<!-- MOVIES -->
-<section id="movies" style="margin-top:50px">
-    <div class="section-title">
-        <h2>فیلمە باڵاکان</h2>
+
+    <div class="nav-links">
+
         <a href="#">
+            سەرەتا
+        </a>
+
+        <a href="#movies">
+            فیلمەکان
+        </a>
+
+        <a href="#genres">
+            جۆرەکان
+        </a>
+
+    </div>
+
+    <input
+        class="search"
+        id="search"
+        type="text"
+        placeholder="گەڕان بە ناوی فیلم..."
+        onkeyup="searchMovies()"
+        aria-label="گەڕان بە ناوی فیلم"
+    >
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            NOVA MOVIES • سینەما
+        </div>
+
+        <h1>
+            سینەما<br>
+            <span>بێ سنوور.</span>
+        </h1>
+
+        <p>
+            باشترین فیلمەکان بدۆزەرەوە، جیهانە نوێکان
+            بکەرەوە و چێژ لە چیرۆکە دڵخوازەکانت ببینە
+            لە یەک شوێن.
+        </p>
+
+        <div class="buttons">
+
+            <button
+                class="watch"
+                type="button"
+            >
+                ▶ ئێستا سەیری بکە
+            </button>
+
+            <button
+                class="more"
+                type="button"
+            >
+                ＋ لیستی من
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+
+<!-- GENRES -->
+
+<section id="genres">
+
+    <div class="section-title">
+
+        <h2>
+            جۆرەکان
+        </h2>
+
+    </div>
+
+    <div class="genres">
+
+        <div class="genre">
+            ئاکشن
+        </div>
+
+        <div class="genre">
+            سەرکێشی
+        </div>
+
+        <div class="genre">
+            فانتازی
+        </div>
+
+        <div class="genre">
+            دراما
+        </div>
+
+        <div class="genre">
+            ترسناک
+        </div>
+
+        <div class="genre">
+            کۆمیدی
+        </div>
+
+        <div class="genre">
+            زانستی-خەیاڵی
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MOVIES -->
+
+<section
+    id="movies"
+    style="margin-top:50px"
+>
+
+    <div class="section-title">
+
+        <h2>
+            فیلمە باڵاکان
+        </h2>
+
+        <a href="#movies">
             هەمووی ببینە ←
         </a>
+
     </div>
-    <div class="movies" id="movieList">
+
+
+    <div
+        class="movies"
+        id="movieList"
+    >
+
+
         <!-- MOVIE 1 -->
-        <div class="movie" data-title="Interstellar">
+
+        <div
+            class="movie"
+            data-title="Interstellar"
+        >
+
             <span class="rating">
                 ★ 8.7
             </span>
+
             <img
                 src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
                 alt="Interstellar"
+                loading="lazy"
             >
+
             <div class="movie-info">
-                <h3>Interstellar</h3>
-                <p>2014 • زانستی-خەیاڵی</p>
+
+                <h3>
+                    Interstellar
+                </h3>
+
+                <p>
+                    2014 • زانستی-خەیاڵی
+                </p>
+
             </div>
+
         </div>
+
+
         <!-- MOVIE 2 -->
-        <div class="movie" data-title="Dune">
+
+        <div
+            class="movie"
+            data-title="Dune"
+        >
+
             <span class="rating">
                 ★ 8.6
             </span>
+
             <img
                 src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
-                alt="Dune"
+                alt="Dune Part Two"
+                loading="lazy"
             >
+
             <div class="movie-info">
-                <h3>Dune: Part Two</h3>
-                <p>2024 • فانتازی</p>
+
+                <h3>
+                    Dune: Part Two
+                </h3>
+
+                <p>
+                    2024 • فانتازی
+                </p>
+
             </div>
+
         </div>
+
+
         <!-- MOVIE 3 -->
-        <div class="movie" data-title="Avatar">
+
+        <div
+            class="movie"
+            data-title="Avatar"
+        >
+
             <span class="rating">
                 ★ 7.8
             </span>
+
             <img
                 src="https://image.tmdb.org/t/p/w500/kyeqWdyUXW608qlYkRqosgbbJyK.jpg"
                 alt="Avatar"
+                loading="lazy"
             >
+
             <div class="movie-info">
-                <h3>Avatar</h3>
-                <p>2009 • سەرکێشی</p>
+
+                <h3>
+                    Avatar
+                </h3>
+
+                <p>
+                    2009 • سەرکێشی
+                </p>
+
             </div>
+
         </div>
+
+
         <!-- MOVIE 4 -->
-        <div class="movie" data-title="The Dark Knight">
+
+        <div
+            class="movie"
+            data-title="The Dark Knight"
+        >
+
             <span class="rating">
                 ★ 9.0
             </span>
+
             <img
                 src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
                 alt="The Dark Knight"
+                loading="lazy"
             >
+
             <div class="movie-info">
-                <h3>The Dark Knight</h3>
-                <p>2008 • ئاکشن</p>
+
+                <h3>
+                    The Dark Knight
+                </h3>
+
+                <p>
+                    2008 • ئاکشن
+                </p>
+
             </div>
+
         </div>
+
+
         <!-- MOVIE 5 -->
-        <div class="movie" data-title="Gladiator">
+
+        <div
+            class="movie"
+            data-title="Gladiator"
+        >
+
             <span class="rating">
                 ★ 8.5
             </span>
+
             <img
                 src="https://image.tmdb.org/t/p/w500/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg"
                 alt="Gladiator"
+                loading="lazy"
             >
+
             <div class="movie-info">
-                <h3>Gladiator</h3>
-                <p>2000 • دراما</p>
+
+                <h3>
+                    Gladiator
+                </h3>
+
+                <p>
+                    2000 • دراما
+                </p>
+
             </div>
+
         </div>
-        <!-- YOUR MOVIE -->
-        <div
-            class="movie"
-            data-title="گدۆو چاکی"
-            onclick="openMovie()"
-        >
-            <span class="rating">
-                ★ 8.5
-            </span>
-            <img
-                src="IMG_0505.jpeg"
-                alt="گدۆو چاکی"
-            >
-            <div class="movie-info">
-                <h3>گدۆو چاکی</h3>
-                <p>2026 • فیلم</p>
-            </div>
-        </div>
+
+
     </div>
+
 </section>
+
 </main>
-<!-- VIDEO PLAYER -->
-<div class="video-modal" id="videoModal">
-<div class="video-box">
-    <div class="video-header">
-        <h2>گدۆو چاکی 🎬</h2>
-        <button
-            class="close-video"
-            onclick="closeMovie()"
-        >
-            ✕
-        </button>
-    </div>
-    <video
-        id="moviePlayer"
-        controls
-        playsinline
-        preload="metadata"
-    >
-        <source
-            src="5882162068501473992.MP4"
-            type="video/mp4"
-        >
-        وێبگەڕەکەت پشتگیری لەم ڤیدیۆیە ناکات.
-    </video>
-</div>
-</div>
+
+
 <!-- FOOTER -->
+
 <footer>
+
     © 2026 NOVA MOVIES
+
     <br><br>
+
     سینەما بۆ هەمووان
+
 </footer>
+
+
 <script>
+
 function searchMovies(){
+
     let input =
-        document.getElementById("search")
+        document
+        .getElementById("search")
         .value
-        .toLowerCase();
+        .toLowerCase()
+        .trim();
+
     let movies =
         document.querySelectorAll(".movie");
+
     movies.forEach(movie => {
+
         let title =
-            movie.dataset.title.toLowerCase();
+            movie
+            .dataset
+            .title
+            .toLowerCase();
+
         if(title.includes(input)){
+
             movie.style.display = "block";
+
         }else{
+
             movie.style.display = "none";
+
         }
+
     });
+
 }
-function openMovie(){
-    let modal =
-        document.getElementById("videoModal");
-    let player =
-        document.getElementById("moviePlayer");
-    modal.style.display = "flex";
-    player.play().catch(() => {});
-}
-function closeMovie(){
-    let modal =
-        document.getElementById("videoModal");
-    let player =
-        document.getElementById("moviePlayer");
-    player.pause();
-    player.currentTime = 0;
-    modal.style.display = "none";
-}
+
 </script>
+
 </body>
 </html>
