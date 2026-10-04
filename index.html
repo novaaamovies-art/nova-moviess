@@ -10,7 +10,6 @@
 <title>NOVA MOVIES | فیلم و سینەما</title>
 
 <meta name="description" content="NOVA MOVIES — جیهانی فیلم و سینەما. فیلمە جۆراوجۆرەکان لە یەک شوێن بدۆزەرەوە.">
-
 <meta name="robots" content="index, follow">
 <meta name="author" content="NOVA MOVIES">
 <meta name="theme-color" content="#8b5cf6">
@@ -41,6 +40,9 @@
   "inLanguage": "ku"
 }
 </script>
+
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 
@@ -97,8 +99,6 @@ nav{
     color:var(--accent);
 }
 
-/* NAV LINKS */
-
 .nav-links{
     display:flex;
     gap:28px;
@@ -115,15 +115,11 @@ nav{
     color:#fff;
 }
 
-/* NAV RIGHT */
-
 .nav-right{
     display:flex;
     align-items:center;
     gap:10px;
 }
-
-/* SEARCH */
 
 .search{
     width:190px;
@@ -139,8 +135,6 @@ nav{
 .search::placeholder{
     color:#888;
 }
-
-/* COLOR BUTTON */
 
 .color-button{
     width:42px;
@@ -160,6 +154,25 @@ nav{
 .color-button:hover{
     transform:scale(1.08);
     background:var(--accent);
+}
+
+/* ACCOUNT BUTTON */
+
+.account-button{
+    height:42px;
+    padding:0 15px;
+    border-radius:22px;
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    font-family:Tahoma,Arial,sans-serif;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.account-button:hover{
+    opacity:.9;
 }
 
 /* COLOR PANEL */
@@ -208,43 +221,15 @@ nav{
     border-color:#fff;
 }
 
-/* COLORS */
-
-.purple{
-    background:#8b5cf6;
-}
-
-.blue{
-    background:#3b82f6;
-}
-
-.cyan{
-    background:#06b6d4;
-}
-
-.green{
-    background:#22c55e;
-}
-
-.red{
-    background:#ef4444;
-}
-
-.orange{
-    background:#f97316;
-}
-
-.pink{
-    background:#ec4899;
-}
-
-.gold{
-    background:#eab308;
-}
-
-.white{
-    background:#e5e7eb;
-}
+.purple{background:#8b5cf6;}
+.blue{background:#3b82f6;}
+.cyan{background:#06b6d4;}
+.green{background:#22c55e;}
+.red{background:#ef4444;}
+.orange{background:#f97316;}
+.pink{background:#ec4899;}
+.gold{background:#eab308;}
+.white{background:#e5e7eb;}
 
 /* HERO */
 
@@ -308,8 +293,6 @@ nav{
     margin-bottom:28px;
     max-width:560px;
 }
-
-/* BUTTONS */
 
 .buttons{
     display:flex;
@@ -415,8 +398,6 @@ button{
     display:block;
 }
 
-/* MOVIE INFO */
-
 .movie-info{
     padding:13px;
 }
@@ -434,8 +415,6 @@ button{
     font-size:12px;
 }
 
-/* DESCRIPTION */
-
 .movie-description{
     color:#999;
     font-size:11px;
@@ -446,8 +425,6 @@ button{
     -webkit-box-orient:vertical;
     overflow:hidden;
 }
-
-/* VIEWERS */
 
 .movie-stats{
     display:flex;
@@ -478,8 +455,6 @@ button{
     font-size:10px;
 }
 
-/* RATING */
-
 .rating{
     position:absolute;
     top:9px;
@@ -490,6 +465,173 @@ button{
     color:#ffd76a;
     font-family:Arial,sans-serif;
     font-size:11px;
+}
+
+/* ACCOUNT MODAL */
+
+.account-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.account-overlay.show{
+    display:flex;
+}
+
+.account-box{
+    width:min(420px,100%);
+    background:#111118;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:24px;
+    padding:28px;
+    box-shadow:0 25px 80px rgba(0,0,0,.55);
+    position:relative;
+}
+
+.account-close{
+    position:absolute;
+    top:12px;
+    left:12px;
+    width:35px;
+    height:35px;
+    padding:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    color:#fff;
+    font-size:18px;
+}
+
+.account-logo{
+    text-align:center;
+    font-family:Arial,sans-serif;
+    font-size:25px;
+    font-weight:900;
+    direction:ltr;
+    margin-bottom:8px;
+}
+
+.account-logo span{
+    color:var(--accent);
+}
+
+.account-box h2{
+    text-align:center;
+    margin-bottom:7px;
+}
+
+.account-subtitle{
+    text-align:center;
+    color:#777;
+    font-size:12px;
+    margin-bottom:22px;
+}
+
+.account-form{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.account-form input{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.06);
+    color:#fff;
+    outline:none;
+    font-family:Tahoma,Arial,sans-serif;
+    text-align:right;
+}
+
+.account-form input:focus{
+    border-color:var(--accent);
+}
+
+.account-submit{
+    width:100%;
+    background:var(--accent);
+    color:#fff;
+    padding:14px;
+}
+
+.account-switch{
+    margin-top:16px;
+    text-align:center;
+    color:#777;
+    font-size:12px;
+}
+
+.account-switch button{
+    padding:0;
+    background:none;
+    color:var(--accent-light);
+    font-size:12px;
+}
+
+.account-message{
+    margin-top:13px;
+    padding:10px;
+    border-radius:10px;
+    background:rgba(255,255,255,.05);
+    color:#bbb;
+    font-size:12px;
+    line-height:1.8;
+    text-align:center;
+    display:none;
+}
+
+.account-message.show{
+    display:block;
+}
+
+/* PROFILE MENU */
+
+.profile-menu{
+    position:fixed;
+    top:82px;
+    right:20px;
+    z-index:500;
+    width:230px;
+    background:rgba(18,18,25,.97);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:18px;
+    padding:15px;
+    display:none;
+    box-shadow:0 20px 50px rgba(0,0,0,.5);
+}
+
+.profile-menu.show{
+    display:block;
+}
+
+.profile-name{
+    color:#fff;
+    font-weight:bold;
+    margin-bottom:4px;
+}
+
+.profile-email{
+    color:#777;
+    font-size:11px;
+    margin-bottom:14px;
+    direction:ltr;
+    text-align:right;
+}
+
+.logout-button{
+    width:100%;
+    background:rgba(239,68,68,.12);
+    color:#fca5a5;
+    border:1px solid rgba(239,68,68,.2);
 }
 
 /* FOOTER */
@@ -518,30 +660,38 @@ footer{
     .search{
         width:150px;
     }
+
 }
 
 @media(max-width:600px){
 
     nav{
-        padding:0 14px;
+        padding:0 10px;
     }
 
     .logo{
-        font-size:17px;
+        font-size:15px;
     }
 
     .nav-right{
-        gap:6px;
+        gap:5px;
     }
 
     .search{
-        width:115px;
+        width:105px;
         font-size:10px;
     }
 
     .color-button{
         width:37px;
         height:37px;
+        font-size:16px;
+    }
+
+    .account-button{
+        width:37px;
+        height:37px;
+        padding:0;
         font-size:16px;
     }
 
@@ -593,6 +743,12 @@ footer{
         left:12px;
         top:75px;
     }
+
+    .profile-menu{
+        right:10px;
+        top:75px;
+    }
+
 }
 
 </style>
@@ -644,6 +800,16 @@ footer{
             🎨
         </button>
 
+        <button
+            class="account-button"
+            id="accountButton"
+            onclick="openAccount()"
+            type="button"
+            title="ئەکاونت"
+        >
+            👤
+        </button>
+
     </div>
 
 </nav>
@@ -660,21 +826,13 @@ footer{
     <div class="colors">
 
         <div class="color purple" onclick="changeColor('#8b5cf6','#c4b5fd','rgba(139,92,246,.15)','rgba(139,92,246,.35)')"></div>
-
         <div class="color blue" onclick="changeColor('#3b82f6','#93c5fd','rgba(59,130,246,.15)','rgba(59,130,246,.35)')"></div>
-
         <div class="color cyan" onclick="changeColor('#06b6d4','#67e8f9','rgba(6,182,212,.15)','rgba(6,182,212,.35)')"></div>
-
         <div class="color green" onclick="changeColor('#22c55e','#86efac','rgba(34,197,94,.15)','rgba(34,197,94,.35)')"></div>
-
         <div class="color red" onclick="changeColor('#ef4444','#fca5a5','rgba(239,68,68,.15)','rgba(239,68,68,.35)')"></div>
-
         <div class="color orange" onclick="changeColor('#f97316','#fdba74','rgba(249,115,22,.15)','rgba(249,115,22,.35)')"></div>
-
         <div class="color pink" onclick="changeColor('#ec4899','#f9a8d4','rgba(236,72,153,.15)','rgba(236,72,153,.35)')"></div>
-
         <div class="color gold" onclick="changeColor('#eab308','#fde047','rgba(234,179,8,.15)','rgba(234,179,8,.35)')"></div>
-
         <div class="color white" onclick="changeColor('#e5e7eb','#ffffff','rgba(229,231,235,.15)','rgba(229,231,235,.35)')"></div>
 
     </div>
@@ -724,17 +882,10 @@ footer{
 
 <main class="container">
 
-
-<!-- GENRES -->
-
 <section id="genres">
 
     <div class="section-title">
-
-        <h2>
-            جۆرەکان
-        </h2>
-
+        <h2>جۆرەکان</h2>
     </div>
 
     <div class="genres">
@@ -752,8 +903,6 @@ footer{
 </section>
 
 
-<!-- MOVIES -->
-
 <section id="movies" style="margin-top:50px">
 
     <div class="section-title">
@@ -768,7 +917,6 @@ footer{
 
     </div>
 
-
     <div class="movies" id="movieList">
 
 
@@ -781,9 +929,7 @@ footer{
             onclick="addView('interstellar')"
         >
 
-            <span class="rating">
-                ★ 8.7
-            </span>
+            <span class="rating">★ 8.7</span>
 
             <img
                 src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
@@ -793,9 +939,7 @@ footer{
 
             <div class="movie-info">
 
-                <h3>
-                    Interstellar
-                </h3>
+                <h3>Interstellar</h3>
 
                 <p class="movie-meta">
                     2014 • زانستی-خەیاڵی
@@ -833,9 +977,7 @@ footer{
             onclick="addView('dune')"
         >
 
-            <span class="rating">
-                ★ 8.6
-            </span>
+            <span class="rating">★ 8.6</span>
 
             <img
                 src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
@@ -845,9 +987,7 @@ footer{
 
             <div class="movie-info">
 
-                <h3>
-                    Dune: Part Two
-                </h3>
+                <h3>Dune: Part Two</h3>
 
                 <p class="movie-meta">
                     2024 • فانتازی
@@ -885,9 +1025,7 @@ footer{
             onclick="addView('avatar')"
         >
 
-            <span class="rating">
-                ★ 7.8
-            </span>
+            <span class="rating">★ 7.8</span>
 
             <img
                 src="https://image.tmdb.org/t/p/w500/kyeqWdyUXW608qlYkRqosgbbJyK.jpg"
@@ -897,9 +1035,7 @@ footer{
 
             <div class="movie-info">
 
-                <h3>
-                    Avatar
-                </h3>
+                <h3>Avatar</h3>
 
                 <p class="movie-meta">
                     2009 • سەرکێشی
@@ -937,9 +1073,7 @@ footer{
             onclick="addView('darkknight')"
         >
 
-            <span class="rating">
-                ★ 9.0
-            </span>
+            <span class="rating">★ 9.0</span>
 
             <img
                 src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
@@ -949,9 +1083,7 @@ footer{
 
             <div class="movie-info">
 
-                <h3>
-                    The Dark Knight
-                </h3>
+                <h3>The Dark Knight</h3>
 
                 <p class="movie-meta">
                     2008 • ئاکشن
@@ -989,9 +1121,7 @@ footer{
             onclick="addView('gladiator')"
         >
 
-            <span class="rating">
-                ★ 8.5
-            </span>
+            <span class="rating">★ 8.5</span>
 
             <img
                 src="https://image.tmdb.org/t/p/w500/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg"
@@ -1001,9 +1131,7 @@ footer{
 
             <div class="movie-info">
 
-                <h3>
-                    Gladiator
-                </h3>
+                <h3>Gladiator</h3>
 
                 <p class="movie-meta">
                     2000 • دراما
@@ -1031,7 +1159,6 @@ footer{
 
         </div>
 
-
     </div>
 
 </section>
@@ -1052,7 +1179,185 @@ footer{
 </footer>
 
 
+<!-- ACCOUNT MODAL -->
+
+<div class="account-overlay" id="accountOverlay">
+
+    <div class="account-box">
+
+        <button
+            class="account-close"
+            onclick="closeAccount()"
+            type="button"
+        >
+            ×
+        </button>
+
+        <div class="account-logo">
+            NOVA<span>MOVIES</span>
+        </div>
+
+        <h2 id="accountTitle">
+            دروستکردنی ئەکاونت
+        </h2>
+
+        <div class="account-subtitle" id="accountSubtitle">
+            بەشداری جیهانی NOVA MOVIES بە
+            ئەکاونتی خۆت
+        </div>
+
+        <form class="account-form" id="signupForm">
+
+            <input
+                id="signupUsername"
+                type="text"
+                placeholder="ناوی بەکارهێنەر"
+                autocomplete="username"
+                required
+                minlength="3"
+            >
+
+            <input
+                id="signupEmail"
+                type="email"
+                placeholder="ئیمەیڵ"
+                autocomplete="email"
+                required
+            >
+
+            <input
+                id="signupPassword"
+                type="password"
+                placeholder="وشەی نهێنی"
+                autocomplete="new-password"
+                required
+                minlength="6"
+            >
+
+            <button
+                class="account-submit"
+                type="submit"
+            >
+                دروستکردنی ئەکاونت
+            </button>
+
+        </form>
+
+        <form
+            class="account-form"
+            id="loginForm"
+            style="display:none"
+        >
+
+            <input
+                id="loginEmail"
+                type="email"
+                placeholder="ئیمەیڵ"
+                autocomplete="email"
+                required
+            >
+
+            <input
+                id="loginPassword"
+                type="password"
+                placeholder="وشەی نهێنی"
+                autocomplete="current-password"
+                required
+            >
+
+            <button
+                class="account-submit"
+                type="submit"
+            >
+                چوونەژوورەوە
+            </button>
+
+        </form>
+
+        <div class="account-message" id="accountMessage"></div>
+
+        <div class="account-switch" id="signupSwitch">
+
+            ئەکاونتت هەیە؟
+
+            <button
+                type="button"
+                onclick="showLogin()"
+            >
+                چوونەژوورەوە
+            </button>
+
+        </div>
+
+        <div
+            class="account-switch"
+            id="loginSwitch"
+            style="display:none"
+        >
+
+            ئەکاونتت نییە؟
+
+            <button
+                type="button"
+                onclick="showSignup()"
+            >
+                دروستی بکە
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- PROFILE MENU -->
+
+<div class="profile-menu" id="profileMenu">
+
+    <div
+        class="profile-name"
+        id="profileName"
+    >
+        بەکارهێنەر
+    </div>
+
+    <div
+        class="profile-email"
+        id="profileEmail"
+    >
+        email
+    </div>
+
+    <button
+        class="logout-button"
+        onclick="logout()"
+        type="button"
+    >
+        🚪 چوونەدەرەوە
+    </button>
+
+</div>
+
+
 <script>
+
+/* =========================
+   SUPABASE
+========================= */
+
+const SUPABASE_URL =
+    "https://cagvmfwgkzndoessckgu.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_sAFGeHOEjnHkbsM9f85dzQ_XvOubzdS";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
 
 /* =========================
    SEARCH
@@ -1078,15 +1383,10 @@ function searchMovies(){
             .title
             .toLowerCase();
 
-        if(title.includes(input)){
-
-            movie.style.display = "block";
-
-        }else{
-
-            movie.style.display = "none";
-
-        }
+        movie.style.display =
+            title.includes(input)
+            ? "block"
+            : "none";
 
     });
 
@@ -1134,25 +1434,10 @@ function changeColor(
         border
     );
 
-    localStorage.setItem(
-        "novaAccent",
-        accent
-    );
-
-    localStorage.setItem(
-        "novaLight",
-        light
-    );
-
-    localStorage.setItem(
-        "novaSoft",
-        soft
-    );
-
-    localStorage.setItem(
-        "novaBorder",
-        border
-    );
+    localStorage.setItem("novaAccent",accent);
+    localStorage.setItem("novaLight",light);
+    localStorage.setItem("novaSoft",soft);
+    localStorage.setItem("novaBorder",border);
 
     document
     .getElementById("colorPanel")
@@ -1161,8 +1446,6 @@ function changeColor(
 
 }
 
-
-/* LOAD SAVED COLOR */
 
 function loadColor(){
 
@@ -1225,7 +1508,9 @@ function getViews(movie){
             "novaViews_" + movie
         );
 
-    return views ? parseInt(views) : 0;
+    return views
+        ? parseInt(views)
+        : 0;
 
 }
 
@@ -1269,10 +1554,443 @@ function addView(movie){
 }
 
 
-/* START */
+/* =========================
+   ACCOUNT MODAL
+========================= */
+
+function openAccount(){
+
+    document
+    .getElementById("accountOverlay")
+    .classList
+    .add("show");
+
+}
+
+
+function closeAccount(){
+
+    document
+    .getElementById("accountOverlay")
+    .classList
+    .remove("show");
+
+    clearAccountMessage();
+
+}
+
+
+function showMessage(message){
+
+    const box =
+        document.getElementById(
+            "accountMessage"
+        );
+
+    box.textContent = message;
+    box.classList.add("show");
+
+}
+
+
+function clearAccountMessage(){
+
+    const box =
+        document.getElementById(
+            "accountMessage"
+        );
+
+    box.textContent = "";
+    box.classList.remove("show");
+
+}
+
+
+function showLogin(){
+
+    document
+    .getElementById("signupForm")
+    .style.display = "none";
+
+    document
+    .getElementById("loginForm")
+    .style.display = "flex";
+
+    document
+    .getElementById("accountTitle")
+    .textContent =
+        "چوونەژوورەوە";
+
+    document
+    .getElementById("accountSubtitle")
+    .textContent =
+        "بە ئەکاونتی NOVA MOVIES ـەکەت بچۆ ژوورەوە";
+
+    document
+    .getElementById("signupSwitch")
+    .style.display = "none";
+
+    document
+    .getElementById("loginSwitch")
+    .style.display = "block";
+
+    clearAccountMessage();
+
+}
+
+
+function showSignup(){
+
+    document
+    .getElementById("signupForm")
+    .style.display = "flex";
+
+    document
+    .getElementById("loginForm")
+    .style.display = "none";
+
+    document
+    .getElementById("accountTitle")
+    .textContent =
+        "دروستکردنی ئەکاونت";
+
+    document
+    .getElementById("accountSubtitle")
+    .textContent =
+        "بەشداری جیهانی NOVA MOVIES بە ئەکاونتی خۆت";
+
+    document
+    .getElementById("signupSwitch")
+    .style.display = "block";
+
+    document
+    .getElementById("loginSwitch")
+    .style.display = "none";
+
+    clearAccountMessage();
+
+}
+
+
+/* =========================
+   SIGN UP
+========================= */
+
+document
+.getElementById("signupForm")
+.addEventListener("submit", async function(event){
+
+    event.preventDefault();
+
+    clearAccountMessage();
+
+    const username =
+        document
+        .getElementById("signupUsername")
+        .value
+        .trim();
+
+    const email =
+        document
+        .getElementById("signupEmail")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("signupPassword")
+        .value;
+
+    if(username.length < 3){
+
+        showMessage(
+            "ناوی بەکارهێنەر دەبێت لانیکەم ٣ پیت بێت."
+        );
+
+        return;
+    }
+
+    const button =
+        this.querySelector("button");
+
+    button.disabled = true;
+    button.textContent =
+        "چاوەڕوان بە...";
+
+    try{
+
+        const { data, error } =
+            await supabaseClient.auth.signUp({
+
+                email:email,
+
+                password:password,
+
+                options:{
+                    data:{
+                        username:username
+                    }
+                }
+
+            });
+
+        if(error){
+            throw error;
+        }
+
+        if(data.session){
+
+            showMessage(
+                "ئەکاونتەکەت بە سەرکەوتوویی دروست بوو! 🎉"
+            );
+
+            setTimeout(() => {
+
+                closeAccount();
+
+            },1200);
+
+        }else{
+
+            showMessage(
+                "ئەکاونتەکەت دروست بوو. 📧 تکایە ئیمەیڵەکەت بکەرەوە و لینکەکەی پشتڕاست بکەرەوە، پاشان Login بکە."
+            );
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+        if(
+            error.message &&
+            error.message.toLowerCase().includes("user already registered")
+        ){
+
+            showMessage(
+                "ئەم ئیمەیڵە پێشتر ئەکاونتی هەیە."
+            );
+
+        }else{
+
+            showMessage(
+                "هەڵەیەک ڕوویدا: " +
+                (error.message || "هەڵەی نەناسراو")
+            );
+
+        }
+
+    }finally{
+
+        button.disabled = false;
+
+        button.textContent =
+            "دروستکردنی ئەکاونت";
+
+    }
+
+});
+
+
+/* =========================
+   LOGIN
+========================= */
+
+document
+.getElementById("loginForm")
+.addEventListener("submit", async function(event){
+
+    event.preventDefault();
+
+    clearAccountMessage();
+
+    const email =
+        document
+        .getElementById("loginEmail")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("loginPassword")
+        .value;
+
+    const button =
+        this.querySelector("button");
+
+    button.disabled = true;
+    button.textContent =
+        "چاوەڕوان بە...";
+
+    try{
+
+        const { error } =
+            await supabaseClient.auth.signInWithPassword({
+
+                email:email,
+                password:password
+
+            });
+
+        if(error){
+            throw error;
+        }
+
+        showMessage(
+            "بە سەرکەوتوویی چوویتە ژوورەوە. 🎉"
+        );
+
+        setTimeout(() => {
+
+            closeAccount();
+
+        },800);
+
+    }catch(error){
+
+        console.error(error);
+
+        showMessage(
+            "ئیمەیڵ یان وشەی نهێنی هەڵەیە."
+        );
+
+    }finally{
+
+        button.disabled = false;
+
+        button.textContent =
+            "چوونەژوورەوە";
+
+    }
+
+});
+
+
+/* =========================
+   LOAD USER
+========================= */
+
+async function loadUser(){
+
+    const {
+        data:{
+            user
+        }
+    } =
+        await supabaseClient.auth.getUser();
+
+    const button =
+        document.getElementById(
+            "accountButton"
+        );
+
+    if(user){
+
+        let username =
+            user.user_metadata?.username;
+
+        if(!username){
+
+            const { data } =
+                await supabaseClient
+                .from("profiles")
+                .select("username")
+                .eq("id",user.id)
+                .maybeSingle();
+
+            username =
+                data?.username || "بەکارهێنەر";
+
+        }
+
+        button.textContent =
+            "👤 " + username;
+
+        button.onclick =
+            toggleProfile;
+
+        document
+        .getElementById("profileName")
+        .textContent =
+            username;
+
+        document
+        .getElementById("profileEmail")
+        .textContent =
+            user.email || "";
+
+    }else{
+
+        button.textContent =
+            "👤";
+
+        button.onclick =
+            openAccount;
+
+    }
+
+}
+
+
+/* =========================
+   PROFILE MENU
+========================= */
+
+function toggleProfile(){
+
+    document
+    .getElementById("profileMenu")
+    .classList
+    .toggle("show");
+
+}
+
+
+async function logout(){
+
+    await supabaseClient.auth.signOut();
+
+    document
+    .getElementById("profileMenu")
+    .classList
+    .remove("show");
+
+    document
+    .getElementById("accountButton")
+    .textContent =
+        "👤";
+
+    document
+    .getElementById("accountButton")
+    .onclick =
+        openAccount;
+
+}
+
+
+/* =========================
+   AUTH STATE
+========================= */
+
+supabaseClient.auth.onAuthStateChange(
+    function(){
+
+        setTimeout(
+            loadUser,
+            0
+        );
+
+    }
+);
+
+
+/* =========================
+   START
+========================= */
 
 loadColor();
 showViews();
+loadUser();
 
 </script>
 
