@@ -41,7 +41,6 @@
 }
 </script>
 
-<!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
@@ -84,6 +83,7 @@ nav{
     z-index:100;
     background:rgba(7,7,11,.78);
     backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
     border-bottom:1px solid rgba(255,255,255,.08);
 }
 
@@ -184,6 +184,7 @@ nav{
     z-index:200;
     background:rgba(18,18,25,.96);
     backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
     border:1px solid rgba(255,255,255,.12);
     border-radius:18px;
     padding:15px;
@@ -349,6 +350,11 @@ button{
     gap:10px;
     overflow-x:auto;
     padding-bottom:10px;
+    scrollbar-width:none;
+}
+
+.genres::-webkit-scrollbar{
+    display:none;
 }
 
 .genre{
@@ -467,6 +473,37 @@ button{
     font-size:11px;
 }
 
+/* SERIES */
+
+.series-section{
+    margin-bottom:50px;
+}
+
+.series-box{
+    padding:25px;
+    border-radius:22px;
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent-soft),
+            rgba(255,255,255,.035)
+        );
+    border:1px solid var(--accent-border);
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+}
+
+.series-box h3{
+    font-size:20px;
+    margin-bottom:8px;
+}
+
+.series-box p{
+    color:#999;
+    font-size:13px;
+    line-height:1.9;
+}
+
 /* ACCOUNT MODAL */
 
 .account-overlay{
@@ -474,6 +511,7 @@ button{
     inset:0;
     background:rgba(0,0,0,.72);
     backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
     z-index:1000;
     display:none;
     align-items:center;
@@ -602,6 +640,7 @@ button{
     width:230px;
     background:rgba(18,18,25,.97);
     backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
     border:1px solid rgba(255,255,255,.1);
     border-radius:18px;
     padding:15px;
@@ -634,36 +673,151 @@ button{
     border:1px solid rgba(239,68,68,.2);
 }
 
-/* FOOTER */
+/* =================================
+   GLASS BOTTOM NAVIGATION
+================================= */
 
-footer{
-    margin-top:60px;
-    padding:35px 6%;
-    text-align:center;
-    border-top:1px solid rgba(255,255,255,.08);
-    color:#666;
-    font-size:13px;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-    .nav-links{
-        display:none;
-    }
-
-    .movies{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .search{
-        width:150px;
-    }
-
+.bottom-nav{
+    display:none;
 }
 
 @media(max-width:600px){
+
+    body{
+        padding-bottom:105px;
+    }
+
+    .bottom-nav{
+        position:fixed;
+        display:flex;
+        align-items:center;
+        justify-content:space-around;
+
+        left:12px;
+        right:12px;
+        bottom:calc(10px + env(safe-area-inset-bottom));
+
+        height:68px;
+
+        z-index:900;
+
+        background:rgba(18,18,27,.68);
+
+        backdrop-filter:blur(28px) saturate(170%);
+        -webkit-backdrop-filter:blur(28px) saturate(170%);
+
+        border:1px solid rgba(255,255,255,.13);
+        border-radius:24px;
+
+        box-shadow:
+            0 18px 50px rgba(0,0,0,.48),
+            inset 0 1px 0 rgba(255,255,255,.08);
+
+        overflow:hidden;
+    }
+
+    .bottom-nav::before{
+        content:"";
+        position:absolute;
+        top:0;
+        left:15%;
+        right:15%;
+        height:1px;
+        background:linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.28),
+            transparent
+        );
+        pointer-events:none;
+    }
+
+    .bottom-nav-item{
+        position:relative;
+
+        width:20%;
+        height:58px;
+
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+
+        gap:4px;
+
+        color:#85858f;
+        text-decoration:none;
+
+        font-family:Tahoma,Arial,sans-serif;
+
+        border-radius:18px;
+
+        transition:
+            transform .22s ease,
+            color .22s ease,
+            background .22s ease;
+    }
+
+    .bottom-nav-icon{
+        font-size:21px;
+        line-height:1;
+
+        transition:
+            transform .22s ease,
+            filter .22s ease;
+    }
+
+    .bottom-nav-label{
+        font-size:9px;
+        white-space:nowrap;
+
+        transition:.22s ease;
+    }
+
+    .bottom-nav-item.active{
+        color:#fff;
+        background:var(--accent-soft);
+    }
+
+    .bottom-nav-item.active .bottom-nav-icon{
+        color:var(--accent-light);
+
+        transform:
+            translateY(-2px)
+            scale(1.08);
+
+        filter:
+            drop-shadow(
+                0 0 8px var(--accent)
+            );
+    }
+
+    .bottom-nav-item.active .bottom-nav-label{
+        color:var(--accent-light);
+        font-weight:bold;
+    }
+
+    .bottom-nav-item.active::after{
+        content:"";
+
+        position:absolute;
+
+        bottom:3px;
+
+        width:18px;
+        height:3px;
+
+        border-radius:10px;
+
+        background:var(--accent);
+
+        box-shadow:
+            0 0 10px var(--accent);
+    }
+
+    .bottom-nav-item:active{
+        transform:scale(.90);
+    }
 
     nav{
         padding:0 10px;
@@ -751,6 +905,17 @@ footer{
 
 }
 
+/* FOOTER */
+
+footer{
+    margin-top:60px;
+    padding:35px 6%;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:#666;
+    font-size:13px;
+}
+
 </style>
 </head>
 
@@ -815,6 +980,58 @@ footer{
 </nav>
 
 
+<!-- GLASS BOTTOM NAVIGATION -->
+
+<div class="bottom-nav">
+
+    <a
+        href="#"
+        class="bottom-nav-item active"
+        onclick="setBottomNav(this)"
+    >
+        <span class="bottom-nav-icon">⌂</span>
+        <span class="bottom-nav-label">سەرەتا</span>
+    </a>
+
+    <a
+        href="#movies"
+        class="bottom-nav-item"
+        onclick="setBottomNav(this)"
+    >
+        <span class="bottom-nav-icon">🎬</span>
+        <span class="bottom-nav-label">فیلم</span>
+    </a>
+
+    <a
+        href="#series"
+        class="bottom-nav-item"
+        onclick="setBottomNav(this)"
+    >
+        <span class="bottom-nav-icon">📺</span>
+        <span class="bottom-nav-label">زنجیرە</span>
+    </a>
+
+    <a
+        href="#search"
+        class="bottom-nav-item"
+        onclick="focusSearch(event,this)"
+    >
+        <span class="bottom-nav-icon">⌕</span>
+        <span class="bottom-nav-label">گەڕان</span>
+    </a>
+
+    <a
+        href="#"
+        class="bottom-nav-item"
+        onclick="openBottomAccount(event,this)"
+    >
+        <span class="bottom-nav-icon">♙</span>
+        <span class="bottom-nav-label">هەژمار</span>
+    </a>
+
+</div>
+
+
 <!-- COLOR PANEL -->
 
 <div class="color-panel" id="colorPanel">
@@ -826,13 +1043,21 @@ footer{
     <div class="colors">
 
         <div class="color purple" onclick="changeColor('#8b5cf6','#c4b5fd','rgba(139,92,246,.15)','rgba(139,92,246,.35)')"></div>
+
         <div class="color blue" onclick="changeColor('#3b82f6','#93c5fd','rgba(59,130,246,.15)','rgba(59,130,246,.35)')"></div>
+
         <div class="color cyan" onclick="changeColor('#06b6d4','#67e8f9','rgba(6,182,212,.15)','rgba(6,182,212,.35)')"></div>
+
         <div class="color green" onclick="changeColor('#22c55e','#86efac','rgba(34,197,94,.15)','rgba(34,197,94,.35)')"></div>
+
         <div class="color red" onclick="changeColor('#ef4444','#fca5a5','rgba(239,68,68,.15)','rgba(239,68,68,.35)')"></div>
+
         <div class="color orange" onclick="changeColor('#f97316','#fdba74','rgba(249,115,22,.15)','rgba(249,115,22,.35)')"></div>
+
         <div class="color pink" onclick="changeColor('#ec4899','#f9a8d4','rgba(236,72,153,.15)','rgba(236,72,153,.35)')"></div>
+
         <div class="color gold" onclick="changeColor('#eab308','#fde047','rgba(234,179,8,.15)','rgba(234,179,8,.35)')"></div>
+
         <div class="color white" onclick="changeColor('#e5e7eb','#ffffff','rgba(229,231,235,.15)','rgba(229,231,235,.35)')"></div>
 
     </div>
@@ -882,10 +1107,50 @@ footer{
 
 <main class="container">
 
+
+<!-- SERIES -->
+
+<section
+    id="series"
+    class="series-section"
+>
+
+    <div class="section-title">
+
+        <h2>
+            زنجیرەکان
+        </h2>
+
+        <a href="#series">
+            هەمووی ببینە ←
+        </a>
+
+    </div>
+
+    <div class="series-box">
+
+        <h3>
+            📺 زنجیرەی فیلمی NOVA
+        </h3>
+
+        <p>
+            بەشی زنجیرەکان بۆ کۆکردنەوەی باشترین
+            سریاڵ و زنجیرە جیهانییەکان لە NOVA MOVIES.
+        </p>
+
+    </div>
+
+</section>
+
+
 <section id="genres">
 
     <div class="section-title">
-        <h2>جۆرەکان</h2>
+
+        <h2>
+            جۆرەکان
+        </h2>
+
     </div>
 
     <div class="genres">
@@ -903,7 +1168,10 @@ footer{
 </section>
 
 
-<section id="movies" style="margin-top:50px">
+<section
+    id="movies"
+    style="margin-top:50px"
+>
 
     <div class="section-title">
 
@@ -917,7 +1185,10 @@ footer{
 
     </div>
 
-    <div class="movies" id="movieList">
+    <div
+        class="movies"
+        id="movieList"
+    >
 
 
         <!-- INTERSTELLAR -->
@@ -929,7 +1200,9 @@ footer{
             onclick="addView('interstellar')"
         >
 
-            <span class="rating">★ 8.7</span>
+            <span class="rating">
+                ★ 8.7
+            </span>
 
             <img
                 src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
@@ -939,7 +1212,9 @@ footer{
 
             <div class="movie-info">
 
-                <h3>Interstellar</h3>
+                <h3>
+                    Interstellar
+                </h3>
 
                 <p class="movie-meta">
                     2014 • زانستی-خەیاڵی
@@ -954,7 +1229,11 @@ footer{
                 <div class="movie-stats">
 
                     <div class="views">
-                        👁 <span id="views-interstellar">0</span> بینین
+                        👁
+                        <span id="views-interstellar">
+                            0
+                        </span>
+                        بینین
                     </div>
 
                     <div class="view-button">
@@ -977,7 +1256,9 @@ footer{
             onclick="addView('dune')"
         >
 
-            <span class="rating">★ 8.6</span>
+            <span class="rating">
+                ★ 8.6
+            </span>
 
             <img
                 src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
@@ -987,7 +1268,9 @@ footer{
 
             <div class="movie-info">
 
-                <h3>Dune: Part Two</h3>
+                <h3>
+                    Dune: Part Two
+                </h3>
 
                 <p class="movie-meta">
                     2024 • فانتازی
@@ -1002,7 +1285,11 @@ footer{
                 <div class="movie-stats">
 
                     <div class="views">
-                        👁 <span id="views-dune">0</span> بینین
+                        👁
+                        <span id="views-dune">
+                            0
+                        </span>
+                        بینین
                     </div>
 
                     <div class="view-button">
@@ -1025,7 +1312,9 @@ footer{
             onclick="addView('avatar')"
         >
 
-            <span class="rating">★ 7.8</span>
+            <span class="rating">
+                ★ 7.8
+            </span>
 
             <img
                 src="https://image.tmdb.org/t/p/w500/kyeqWdyUXW608qlYkRqosgbbJyK.jpg"
@@ -1035,7 +1324,9 @@ footer{
 
             <div class="movie-info">
 
-                <h3>Avatar</h3>
+                <h3>
+                    Avatar
+                </h3>
 
                 <p class="movie-meta">
                     2009 • سەرکێشی
@@ -1050,7 +1341,11 @@ footer{
                 <div class="movie-stats">
 
                     <div class="views">
-                        👁 <span id="views-avatar">0</span> بینین
+                        👁
+                        <span id="views-avatar">
+                            0
+                        </span>
+                        بینین
                     </div>
 
                     <div class="view-button">
@@ -1073,7 +1368,9 @@ footer{
             onclick="addView('darkknight')"
         >
 
-            <span class="rating">★ 9.0</span>
+            <span class="rating">
+                ★ 9.0
+            </span>
 
             <img
                 src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
@@ -1083,7 +1380,9 @@ footer{
 
             <div class="movie-info">
 
-                <h3>The Dark Knight</h3>
+                <h3>
+                    The Dark Knight
+                </h3>
 
                 <p class="movie-meta">
                     2008 • ئاکشن
@@ -1098,7 +1397,15 @@ footer{
                 <div class="movie-stats">
 
                     <div class="views">
-                        👁 <span id="views-darkknight">0</span> بینین
+
+                        👁
+
+                        <span id="views-darkknight">
+                            0
+                        </span>
+
+                        بینین
+
                     </div>
 
                     <div class="view-button">
@@ -1121,7 +1428,9 @@ footer{
             onclick="addView('gladiator')"
         >
 
-            <span class="rating">★ 8.5</span>
+            <span class="rating">
+                ★ 8.5
+            </span>
 
             <img
                 src="https://image.tmdb.org/t/p/w500/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg"
@@ -1131,7 +1440,9 @@ footer{
 
             <div class="movie-info">
 
-                <h3>Gladiator</h3>
+                <h3>
+                    Gladiator
+                </h3>
 
                 <p class="movie-meta">
                     2000 • دراما
@@ -1146,7 +1457,15 @@ footer{
                 <div class="movie-stats">
 
                     <div class="views">
-                        👁 <span id="views-gladiator">0</span> بینین
+
+                        👁
+
+                        <span id="views-gladiator">
+                            0
+                        </span>
+
+                        بینین
+
                     </div>
 
                     <div class="view-button">
@@ -1181,7 +1500,10 @@ footer{
 
 <!-- ACCOUNT MODAL -->
 
-<div class="account-overlay" id="accountOverlay">
+<div
+    class="account-overlay"
+    id="accountOverlay"
+>
 
     <div class="account-box">
 
@@ -1201,12 +1523,18 @@ footer{
             دروستکردنی ئەکاونت
         </h2>
 
-        <div class="account-subtitle" id="accountSubtitle">
+        <div
+            class="account-subtitle"
+            id="accountSubtitle"
+        >
             بەشداری جیهانی NOVA MOVIES بە
             ئەکاونتی خۆت
         </div>
 
-        <form class="account-form" id="signupForm">
+        <form
+            class="account-form"
+            id="signupForm"
+        >
 
             <input
                 id="signupUsername"
@@ -1274,9 +1602,15 @@ footer{
 
         </form>
 
-        <div class="account-message" id="accountMessage"></div>
+        <div
+            class="account-message"
+            id="accountMessage"
+        ></div>
 
-        <div class="account-switch" id="signupSwitch">
+        <div
+            class="account-switch"
+            id="signupSwitch"
+        >
 
             ئەکاونتت هەیە؟
 
@@ -1313,7 +1647,10 @@ footer{
 
 <!-- PROFILE MENU -->
 
-<div class="profile-menu" id="profileMenu">
+<div
+    class="profile-menu"
+    id="profileMenu"
+>
 
     <div
         class="profile-name"
@@ -1434,10 +1771,25 @@ function changeColor(
         border
     );
 
-    localStorage.setItem("novaAccent",accent);
-    localStorage.setItem("novaLight",light);
-    localStorage.setItem("novaSoft",soft);
-    localStorage.setItem("novaBorder",border);
+    localStorage.setItem(
+        "novaAccent",
+        accent
+    );
+
+    localStorage.setItem(
+        "novaLight",
+        light
+    );
+
+    localStorage.setItem(
+        "novaSoft",
+        soft
+    );
+
+    localStorage.setItem(
+        "novaBorder",
+        border
+    );
 
     document
     .getElementById("colorPanel")
@@ -1561,6 +1913,11 @@ function addView(movie){
 function openAccount(){
 
     document
+    .getElementById("profileMenu")
+    .classList
+    .remove("show");
+
+    document
     .getElementById("accountOverlay")
     .classList
     .add("show");
@@ -1588,6 +1945,7 @@ function showMessage(message){
         );
 
     box.textContent = message;
+
     box.classList.add("show");
 
 }
@@ -1601,6 +1959,7 @@ function clearAccountMessage(){
         );
 
     box.textContent = "";
+
     box.classList.remove("show");
 
 }
@@ -1678,7 +2037,9 @@ function showSignup(){
 
 document
 .getElementById("signupForm")
-.addEventListener("submit", async function(event){
+.addEventListener(
+    "submit",
+    async function(event){
 
     event.preventDefault();
 
@@ -1708,12 +2069,14 @@ document
         );
 
         return;
+
     }
 
     const button =
         this.querySelector("button");
 
     button.disabled = true;
+
     button.textContent =
         "چاوەڕوان بە...";
 
@@ -1764,7 +2127,9 @@ document
 
         if(
             error.message &&
-            error.message.toLowerCase().includes("user already registered")
+            error.message
+            .toLowerCase()
+            .includes("user already registered")
         ){
 
             showMessage(
@@ -1775,7 +2140,10 @@ document
 
             showMessage(
                 "هەڵەیەک ڕوویدا: " +
-                (error.message || "هەڵەی نەناسراو")
+                (
+                    error.message ||
+                    "هەڵەی نەناسراو"
+                )
             );
 
         }
@@ -1798,7 +2166,9 @@ document
 
 document
 .getElementById("loginForm")
-.addEventListener("submit", async function(event){
+.addEventListener(
+    "submit",
+    async function(event){
 
     event.preventDefault();
 
@@ -1819,6 +2189,7 @@ document
         this.querySelector("button");
 
     button.disabled = true;
+
     button.textContent =
         "چاوەڕوان بە...";
 
@@ -1828,6 +2199,7 @@ document
             await supabaseClient.auth.signInWithPassword({
 
                 email:email,
+
                 password:password
 
             });
@@ -1877,7 +2249,9 @@ async function loadUser(){
             user
         }
     } =
-        await supabaseClient.auth.getUser();
+        await supabaseClient
+        .auth
+        .getUser();
 
     const button =
         document.getElementById(
@@ -1887,7 +2261,9 @@ async function loadUser(){
     if(user){
 
         let username =
-            user.user_metadata?.username;
+            user
+            .user_metadata
+            ?.username;
 
         if(!username){
 
@@ -1899,7 +2275,8 @@ async function loadUser(){
                 .maybeSingle();
 
             username =
-                data?.username || "بەکارهێنەر";
+                data?.username ||
+                "بەکارهێنەر";
 
         }
 
@@ -1948,7 +2325,9 @@ function toggleProfile(){
 
 async function logout(){
 
-    await supabaseClient.auth.signOut();
+    await supabaseClient
+    .auth
+    .signOut();
 
     document
     .getElementById("profileMenu")
@@ -1979,6 +2358,150 @@ supabaseClient.auth.onAuthStateChange(
             loadUser,
             0
         );
+
+    }
+);
+
+
+/* =========================
+   GLASS BOTTOM NAV
+========================= */
+
+function setBottomNav(element){
+
+    document
+    .querySelectorAll(".bottom-nav-item")
+    .forEach(item => {
+
+        item.classList.remove("active");
+
+    });
+
+    element.classList.add("active");
+
+}
+
+
+/* SEARCH FROM BOTTOM NAV */
+
+function focusSearch(event, element){
+
+    event.preventDefault();
+
+    setBottomNav(element);
+
+    const search =
+        document.getElementById("search");
+
+    if(search){
+
+        search.focus();
+
+        search.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    }
+
+}
+
+
+/* ACCOUNT FROM BOTTOM NAV */
+
+function openBottomAccount(
+    event,
+    element
+){
+
+    event.preventDefault();
+
+    setBottomNav(element);
+
+    openAccount();
+
+}
+
+
+/* =========================
+   BOTTOM NAV ACTIVE STATE
+========================= */
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        if(window.innerWidth > 600){
+            return;
+        }
+
+        const sections = [
+
+            {
+                id:"series",
+                index:2
+            },
+
+            {
+                id:"genres",
+                index:1
+            },
+
+            {
+                id:"movies",
+                index:1
+            }
+
+        ];
+
+        let current = 0;
+
+        if(
+            window.scrollY >
+            250
+        ){
+
+            current = 1;
+
+        }
+
+        if(
+            document.getElementById("series")
+        ){
+
+            const seriesTop =
+                document
+                .getElementById("series")
+                .offsetTop;
+
+            if(
+                window.scrollY >=
+                seriesTop - 200
+            ){
+
+                current = 2;
+
+            }
+
+        }
+
+        const items =
+            document.querySelectorAll(
+                ".bottom-nav-item"
+            );
+
+        items.forEach(
+            item =>
+            item.classList.remove(
+                "active"
+            )
+        );
+
+        if(items[current]){
+            items[current]
+            .classList
+            .add("active");
+        }
 
     }
 );
