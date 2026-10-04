@@ -7,23 +7,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO -->
 <title>NOVA MOVIES | فیلم و سینەما</title>
 
-<meta name="description" content="NOVA MOVIES — جیهانی فیلم و سینەما. فیلمە جۆراوجۆرەکان لە یەک شوێن بدۆزەرەوە و چێژ لە چیرۆکە دڵخوازەکانت ببینە.">
+<meta name="description" content="NOVA MOVIES — جیهانی فیلم و سینەما. فیلمە جۆراوجۆرەکان لە یەک شوێن بدۆزەرەوە.">
 
 <meta name="robots" content="index, follow">
-
 <meta name="author" content="NOVA MOVIES">
-
-<meta name="theme-color" content="#07070b">
+<meta name="theme-color" content="#8b5cf6">
 
 <meta name="keywords" content="NOVA MOVIES, فیلم, فیلمەکان, سینەما, فیلمی کوردی, Kurdish Movies, Movies, Cinema">
 
-<!-- Canonical -->
 <link rel="canonical" href="https://novaaamovies-art.github.io/nova-moviess/">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="NOVA MOVIES | فیلم و سینەما">
 <meta property="og:description" content="NOVA MOVIES — جیهانی فیلم و سینەما لە یەک شوێن.">
@@ -31,12 +26,10 @@
 <meta property="og:site_name" content="NOVA MOVIES">
 <meta property="og:locale" content="ku">
 
-<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="NOVA MOVIES | فیلم و سینەما">
 <meta name="twitter:description" content="NOVA MOVIES — جیهانی فیلم و سینەما لە یەک شوێن.">
 
-<!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -51,6 +44,13 @@
 
 <style>
 
+:root{
+    --accent:#8b5cf6;
+    --accent-light:#c4b5fd;
+    --accent-soft:rgba(139,92,246,.15);
+    --accent-border:rgba(139,92,246,.35);
+}
+
 *{
     margin:0;
     padding:0;
@@ -64,7 +64,7 @@ html{
 body{
     background:#07070b;
     color:#fff;
-    font-family:Tahoma, Arial, sans-serif;
+    font-family:Tahoma,Arial,sans-serif;
 }
 
 /* NAVBAR */
@@ -94,7 +94,7 @@ nav{
 }
 
 .logo span{
-    color:#8b5cf6;
+    color:var(--accent);
 }
 
 /* NAV LINKS */
@@ -115,6 +115,14 @@ nav{
     color:#fff;
 }
 
+/* NAV RIGHT */
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
 /* SEARCH */
 
 .search{
@@ -130,6 +138,112 @@ nav{
 
 .search::placeholder{
     color:#888;
+}
+
+/* COLOR BUTTON */
+
+.color-button{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.08);
+    color:#fff;
+    cursor:pointer;
+    font-size:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.2s;
+}
+
+.color-button:hover{
+    transform:scale(1.08);
+    background:var(--accent);
+}
+
+/* COLOR PANEL */
+
+.color-panel{
+    position:fixed;
+    top:82px;
+    left:20px;
+    z-index:200;
+    background:rgba(18,18,25,.96);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:18px;
+    padding:15px;
+    width:210px;
+    display:none;
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.color-panel.show{
+    display:block;
+}
+
+.color-panel h4{
+    font-size:13px;
+    margin-bottom:12px;
+    color:#ddd;
+}
+
+.colors{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.color{
+    height:38px;
+    border-radius:10px;
+    cursor:pointer;
+    border:2px solid transparent;
+    transition:.2s;
+}
+
+.color:hover{
+    transform:scale(1.06);
+    border-color:#fff;
+}
+
+/* COLORS */
+
+.purple{
+    background:#8b5cf6;
+}
+
+.blue{
+    background:#3b82f6;
+}
+
+.cyan{
+    background:#06b6d4;
+}
+
+.green{
+    background:#22c55e;
+}
+
+.red{
+    background:#ef4444;
+}
+
+.orange{
+    background:#f97316;
+}
+
+.pink{
+    background:#ec4899;
+}
+
+.gold{
+    background:#eab308;
+}
+
+.white{
+    background:#e5e7eb;
 }
 
 /* HERO */
@@ -164,9 +278,9 @@ nav{
 
 .badge{
     display:inline-block;
-    color:#c4b5fd;
-    background:rgba(139,92,246,.15);
-    border:1px solid rgba(139,92,246,.35);
+    color:var(--accent-light);
+    background:var(--accent-soft);
+    border:1px solid var(--accent-border);
     padding:8px 14px;
     border-radius:30px;
     margin-bottom:20px;
@@ -184,7 +298,7 @@ nav{
 }
 
 .hero h1 span{
-    color:#8b5cf6;
+    color:var(--accent);
 }
 
 .hero p{
@@ -212,7 +326,7 @@ button{
 }
 
 .watch{
-    background:#8b5cf6;
+    background:var(--accent);
     color:#fff;
 }
 
@@ -240,7 +354,7 @@ button{
 }
 
 .section-title a{
-    color:#a78bfa;
+    color:var(--accent-light);
     text-decoration:none;
     font-size:13px;
 }
@@ -266,7 +380,7 @@ button{
 }
 
 .genre:hover{
-    background:#8b5cf6;
+    background:var(--accent);
     color:#fff;
 }
 
@@ -285,10 +399,13 @@ button{
     border-radius:15px;
     cursor:pointer;
     transition:.3s;
+    border:1px solid rgba(255,255,255,.04);
 }
 
 .movie:hover{
     transform:translateY(-7px);
+    border-color:var(--accent-border);
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
 }
 
 .movie img{
@@ -298,8 +415,10 @@ button{
     display:block;
 }
 
+/* MOVIE INFO */
+
 .movie-info{
-    padding:12px;
+    padding:13px;
 }
 
 .movie-info h3{
@@ -309,10 +428,54 @@ button{
     text-overflow:ellipsis;
 }
 
-.movie-info p{
+.movie-meta{
     margin-top:6px;
     color:#777;
     font-size:12px;
+}
+
+/* DESCRIPTION */
+
+.movie-description{
+    color:#999;
+    font-size:11px;
+    line-height:1.8;
+    margin-top:9px;
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+/* VIEWERS */
+
+.movie-stats{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:11px;
+    padding-top:9px;
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+.views{
+    color:#888;
+    font-size:11px;
+    direction:rtl;
+}
+
+.views span{
+    color:var(--accent-light);
+    font-family:Arial,sans-serif;
+    font-weight:bold;
+}
+
+.view-button{
+    padding:5px 8px;
+    border-radius:7px;
+    background:var(--accent-soft);
+    color:var(--accent-light);
+    font-size:10px;
 }
 
 /* RATING */
@@ -360,16 +523,26 @@ footer{
 @media(max-width:600px){
 
     nav{
-        padding:0 18px;
+        padding:0 14px;
     }
 
     .logo{
-        font-size:19px;
+        font-size:17px;
+    }
+
+    .nav-right{
+        gap:6px;
     }
 
     .search{
-        width:130px;
-        font-size:11px;
+        width:115px;
+        font-size:10px;
+    }
+
+    .color-button{
+        width:37px;
+        height:37px;
+        font-size:16px;
     }
 
     .hero{
@@ -402,6 +575,24 @@ footer{
     .movie-info h3{
         font-size:13px;
     }
+
+    .movie-description{
+        font-size:10px;
+        line-height:1.7;
+    }
+
+    .movie-stats{
+        display:block;
+    }
+
+    .view-button{
+        display:none;
+    }
+
+    .color-panel{
+        left:12px;
+        top:75px;
+    }
 }
 
 </style>
@@ -433,16 +624,62 @@ footer{
 
     </div>
 
-    <input
-        class="search"
-        id="search"
-        type="text"
-        placeholder="گەڕان بە ناوی فیلم..."
-        onkeyup="searchMovies()"
-        aria-label="گەڕان بە ناوی فیلم"
-    >
+    <div class="nav-right">
+
+        <input
+            class="search"
+            id="search"
+            type="text"
+            placeholder="گەڕان بە ناوی فیلم..."
+            onkeyup="searchMovies()"
+            aria-label="گەڕان بە ناوی فیلم"
+        >
+
+        <button
+            class="color-button"
+            onclick="toggleColors()"
+            title="گۆڕینی ڕەنگ"
+            type="button"
+        >
+            🎨
+        </button>
+
+    </div>
 
 </nav>
+
+
+<!-- COLOR PANEL -->
+
+<div class="color-panel" id="colorPanel">
+
+    <h4>
+        ڕەنگی NOVA MOVIES
+    </h4>
+
+    <div class="colors">
+
+        <div class="color purple" onclick="changeColor('#8b5cf6','#c4b5fd','rgba(139,92,246,.15)','rgba(139,92,246,.35)')"></div>
+
+        <div class="color blue" onclick="changeColor('#3b82f6','#93c5fd','rgba(59,130,246,.15)','rgba(59,130,246,.35)')"></div>
+
+        <div class="color cyan" onclick="changeColor('#06b6d4','#67e8f9','rgba(6,182,212,.15)','rgba(6,182,212,.35)')"></div>
+
+        <div class="color green" onclick="changeColor('#22c55e','#86efac','rgba(34,197,94,.15)','rgba(34,197,94,.35)')"></div>
+
+        <div class="color red" onclick="changeColor('#ef4444','#fca5a5','rgba(239,68,68,.15)','rgba(239,68,68,.35)')"></div>
+
+        <div class="color orange" onclick="changeColor('#f97316','#fdba74','rgba(249,115,22,.15)','rgba(249,115,22,.35)')"></div>
+
+        <div class="color pink" onclick="changeColor('#ec4899','#f9a8d4','rgba(236,72,153,.15)','rgba(236,72,153,.35)')"></div>
+
+        <div class="color gold" onclick="changeColor('#eab308','#fde047','rgba(234,179,8,.15)','rgba(234,179,8,.35)')"></div>
+
+        <div class="color white" onclick="changeColor('#e5e7eb','#ffffff','rgba(229,231,235,.15)','rgba(229,231,235,.35)')"></div>
+
+    </div>
+
+</div>
 
 
 <!-- HERO -->
@@ -468,17 +705,11 @@ footer{
 
         <div class="buttons">
 
-            <button
-                class="watch"
-                type="button"
-            >
+            <button class="watch" type="button">
                 ▶ ئێستا سەیری بکە
             </button>
 
-            <button
-                class="more"
-                type="button"
-            >
+            <button class="more" type="button">
                 ＋ لیستی من
             </button>
 
@@ -508,33 +739,13 @@ footer{
 
     <div class="genres">
 
-        <div class="genre">
-            ئاکشن
-        </div>
-
-        <div class="genre">
-            سەرکێشی
-        </div>
-
-        <div class="genre">
-            فانتازی
-        </div>
-
-        <div class="genre">
-            دراما
-        </div>
-
-        <div class="genre">
-            ترسناک
-        </div>
-
-        <div class="genre">
-            کۆمیدی
-        </div>
-
-        <div class="genre">
-            زانستی-خەیاڵی
-        </div>
+        <div class="genre">ئاکشن</div>
+        <div class="genre">سەرکێشی</div>
+        <div class="genre">فانتازی</div>
+        <div class="genre">دراما</div>
+        <div class="genre">ترسناک</div>
+        <div class="genre">کۆمیدی</div>
+        <div class="genre">زانستی-خەیاڵی</div>
 
     </div>
 
@@ -543,10 +754,7 @@ footer{
 
 <!-- MOVIES -->
 
-<section
-    id="movies"
-    style="margin-top:50px"
->
+<section id="movies" style="margin-top:50px">
 
     <div class="section-title">
 
@@ -561,17 +769,16 @@ footer{
     </div>
 
 
-    <div
-        class="movies"
-        id="movieList"
-    >
+    <div class="movies" id="movieList">
 
 
-        <!-- MOVIE 1 -->
+        <!-- INTERSTELLAR -->
 
         <div
             class="movie"
             data-title="Interstellar"
+            data-movie="interstellar"
+            onclick="addView('interstellar')"
         >
 
             <span class="rating">
@@ -590,20 +797,40 @@ footer{
                     Interstellar
                 </h3>
 
-                <p>
+                <p class="movie-meta">
                     2014 • زانستی-خەیاڵی
                 </p>
+
+                <p class="movie-description">
+                    لە داهاتوویەکی دووردا، کاتێک ژیان لەسەر زەوی
+                    ڕووبەڕووی قەیران دەبێتەوە، گرووپێک ئاسمان
+                    دەبڕن بۆ دۆزینەوەی شوێنێکی نوێ بۆ مرۆڤایەتی.
+                </p>
+
+                <div class="movie-stats">
+
+                    <div class="views">
+                        👁 <span id="views-interstellar">0</span> بینین
+                    </div>
+
+                    <div class="view-button">
+                        ▶ بینین
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- MOVIE 2 -->
+        <!-- DUNE -->
 
         <div
             class="movie"
             data-title="Dune"
+            data-movie="dune"
+            onclick="addView('dune')"
         >
 
             <span class="rating">
@@ -622,20 +849,40 @@ footer{
                     Dune: Part Two
                 </h3>
 
-                <p>
+                <p class="movie-meta">
                     2024 • فانتازی
                 </p>
+
+                <p class="movie-description">
+                    پاڵەوانێک لەگەڵ خەڵکی ناوچەیەکی وشک و
+                    دوور یەکدەگرێت بۆ ڕووبەڕووبوونەوە لەگەڵ
+                    هێزێکی گەورە و گۆڕینی چارەنووسی جیهان.
+                </p>
+
+                <div class="movie-stats">
+
+                    <div class="views">
+                        👁 <span id="views-dune">0</span> بینین
+                    </div>
+
+                    <div class="view-button">
+                        ▶ بینین
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- MOVIE 3 -->
+        <!-- AVATAR -->
 
         <div
             class="movie"
             data-title="Avatar"
+            data-movie="avatar"
+            onclick="addView('avatar')"
         >
 
             <span class="rating">
@@ -654,20 +901,40 @@ footer{
                     Avatar
                 </h3>
 
-                <p>
+                <p class="movie-meta">
                     2009 • سەرکێشی
                 </p>
+
+                <p class="movie-description">
+                    سەربازێک دەچێتە جیهانێکی سەوز و سەرسوڕهێنەر
+                    و لەوێ دەستی بە تێگەیشتن لە خەڵک و سروشتی
+                    ئەو جیهانە دەکات.
+                </p>
+
+                <div class="movie-stats">
+
+                    <div class="views">
+                        👁 <span id="views-avatar">0</span> بینین
+                    </div>
+
+                    <div class="view-button">
+                        ▶ بینین
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- MOVIE 4 -->
+        <!-- DARK KNIGHT -->
 
         <div
             class="movie"
             data-title="The Dark Knight"
+            data-movie="darkknight"
+            onclick="addView('darkknight')"
         >
 
             <span class="rating">
@@ -686,20 +953,40 @@ footer{
                     The Dark Knight
                 </h3>
 
-                <p>
+                <p class="movie-meta">
                     2008 • ئاکشن
                 </p>
+
+                <p class="movie-description">
+                    شاری گۆثەم ڕووبەڕووی مەترسییەکی نوێ دەبێتەوە،
+                    و پاڵەوانێک دەبێت بە هۆشیاری و بوێری
+                    ڕووبەڕووی هەڕەشەکە ببێتەوە.
+                </p>
+
+                <div class="movie-stats">
+
+                    <div class="views">
+                        👁 <span id="views-darkknight">0</span> بینین
+                    </div>
+
+                    <div class="view-button">
+                        ▶ بینین
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- MOVIE 5 -->
+        <!-- GLADIATOR -->
 
         <div
             class="movie"
             data-title="Gladiator"
+            data-movie="gladiator"
+            onclick="addView('gladiator')"
         >
 
             <span class="rating">
@@ -718,9 +1005,27 @@ footer{
                     Gladiator
                 </h3>
 
-                <p>
+                <p class="movie-meta">
                     2000 • دراما
                 </p>
+
+                <p class="movie-description">
+                    سەربازێکی ڕۆمی لەدوای ڕووداوێکی گەورە
+                    دەگەڕێتەوە بۆ ژیانی شەڕ و هەوڵ دەدات
+                    ڕێگای خۆی بۆ دادپەروەری بدۆزێتەوە.
+                </p>
+
+                <div class="movie-stats">
+
+                    <div class="views">
+                        👁 <span id="views-gladiator">0</span> بینین
+                    </div>
+
+                    <div class="view-button">
+                        ▶ بینین
+                    </div>
+
+                </div>
 
             </div>
 
@@ -748,6 +1053,10 @@ footer{
 
 
 <script>
+
+/* =========================
+   SEARCH
+========================= */
 
 function searchMovies(){
 
@@ -782,6 +1091,188 @@ function searchMovies(){
     });
 
 }
+
+
+/* =========================
+   COLOR SYSTEM
+========================= */
+
+function toggleColors(){
+
+    document
+    .getElementById("colorPanel")
+    .classList
+    .toggle("show");
+
+}
+
+
+function changeColor(
+    accent,
+    light,
+    soft,
+    border
+){
+
+    document.documentElement.style.setProperty(
+        "--accent",
+        accent
+    );
+
+    document.documentElement.style.setProperty(
+        "--accent-light",
+        light
+    );
+
+    document.documentElement.style.setProperty(
+        "--accent-soft",
+        soft
+    );
+
+    document.documentElement.style.setProperty(
+        "--accent-border",
+        border
+    );
+
+    localStorage.setItem(
+        "novaAccent",
+        accent
+    );
+
+    localStorage.setItem(
+        "novaLight",
+        light
+    );
+
+    localStorage.setItem(
+        "novaSoft",
+        soft
+    );
+
+    localStorage.setItem(
+        "novaBorder",
+        border
+    );
+
+    document
+    .getElementById("colorPanel")
+    .classList
+    .remove("show");
+
+}
+
+
+/* LOAD SAVED COLOR */
+
+function loadColor(){
+
+    let accent =
+        localStorage.getItem("novaAccent");
+
+    let light =
+        localStorage.getItem("novaLight");
+
+    let soft =
+        localStorage.getItem("novaSoft");
+
+    let border =
+        localStorage.getItem("novaBorder");
+
+    if(accent){
+
+        document.documentElement.style.setProperty(
+            "--accent",
+            accent
+        );
+
+        document.documentElement.style.setProperty(
+            "--accent-light",
+            light
+        );
+
+        document.documentElement.style.setProperty(
+            "--accent-soft",
+            soft
+        );
+
+        document.documentElement.style.setProperty(
+            "--accent-border",
+            border
+        );
+
+    }
+
+}
+
+
+/* =========================
+   VIEW COUNTER
+========================= */
+
+const movies = [
+    "interstellar",
+    "dune",
+    "avatar",
+    "darkknight",
+    "gladiator"
+];
+
+
+function getViews(movie){
+
+    let views =
+        localStorage.getItem(
+            "novaViews_" + movie
+        );
+
+    return views ? parseInt(views) : 0;
+
+}
+
+
+function showViews(){
+
+    movies.forEach(movie => {
+
+        let element =
+            document.getElementById(
+                "views-" + movie
+            );
+
+        if(element){
+
+            element.textContent =
+                getViews(movie)
+                .toLocaleString();
+
+        }
+
+    });
+
+}
+
+
+function addView(movie){
+
+    let views =
+        getViews(movie);
+
+    views++;
+
+    localStorage.setItem(
+        "novaViews_" + movie,
+        views
+    );
+
+    showViews();
+
+}
+
+
+/* START */
+
+loadColor();
+showViews();
 
 </script>
 
