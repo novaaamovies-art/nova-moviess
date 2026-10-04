@@ -4,11 +4,8 @@
 <meta name="google-site-verification" content="PWzwYuquSwneGHXx22qmaAvWj0T29fXWioNl54_ETjQ" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>NOVA MOVIES</title>
-
 <style>
-*{
 *{
     margin:0;
     padding:0;
@@ -232,6 +229,49 @@ button{
     font-family:Arial,sans-serif;
     font-size:11px;
 }
+/* VIDEO MODAL */
+.video-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:999;
+    background:rgba(0,0,0,.92);
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+.video-box{
+    width:min(1000px,95vw);
+    background:#111118;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:18px;
+    padding:15px;
+    box-shadow:0 20px 80px rgba(0,0,0,.7);
+}
+.video-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:12px;
+}
+.video-header h2{
+    font-size:18px;
+}
+.close-video{
+    background:rgba(255,255,255,.1);
+    color:#fff;
+    font-size:18px;
+    width:40px;
+    height:40px;
+    padding:0;
+}
+#moviePlayer{
+    width:100%;
+    max-height:75vh;
+    background:#000;
+    border-radius:12px;
+    display:block;
+}
 /* FOOTER */
 footer{
     margin-top:60px;
@@ -288,6 +328,10 @@ footer{
     .movie-info h3{
         font-size:13px;
     }
+    .video-box{
+        width:100%;
+        padding:10px;
+    }
 }
 </style>
 </head>
@@ -297,166 +341,188 @@ footer{
     <div class="logo">
         NOVA<span>MOVIES</span>
     </div>
-    <div class="nav-links">
-        <a href="#">سەرەتا</a>
-        <a href="#movies">فیلمەکان</a>
-        <a href="#genres">جۆرەکان</a>
-    </div>
-    <input
-        class="search"
-        id="search"
-        type="text"
-        placeholder="گەڕان بە ناوی فیلم..."
-        onkeyup="searchMovies()"
-    >
+<div class="nav-links">
+    <a href="#">سەرەتا</a>
+    <a href="#movies">فیلمەکان</a>
+    <a href="#genres">جۆرەکان</a>
+</div>
+<input
+    class="search"
+    id="search"
+    type="text"
+    placeholder="گەڕان بە ناوی فیلم..."
+    onkeyup="searchMovies()"
+>
 </nav>
 <!-- HERO -->
 <section class="hero">
     <div class="hero-content">
-        <div class="badge">
-            NOVA MOVIES • سینەما
-        </div>
-        <h1>
-            سینەما<br>
-            <span>بێ سنوور.</span>
-        </h1>
-        <p>
-            باشترین فیلمەکان بدۆزەرەوە، جیهانە نوێکان
-            بکەرەوە و چێژ لە چیرۆکە دڵخوازەکانت ببینە
-            لە یەک شوێن.
-        </p>
-        <div class="buttons">
-            <button class="watch" onclick="watchMovie()">
-                ▶ ئێستا سەیری بکە
-            </button>
-            <button class="more">
-                ＋ لیستی من
-            </button>
-        </div>
+    <div class="badge">
+        NOVA MOVIES • سینەما
     </div>
+    <h1>
+        سینەما<br>
+        <span>بێ سنوور.</span>
+    </h1>
+    <p>
+        باشترین فیلمەکان بدۆزەرەوە، جیهانە نوێکان
+        بکەرەوە و چێژ لە چیرۆکە دڵخوازەکانت ببینە
+        لە یەک شوێن.
+    </p>
+    <div class="buttons">
+        <button class="watch" onclick="openMovie()">
+            ▶ ئێستا سەیری بکە
+        </button>
+        <button class="more">
+            ＋ لیستی من
+        </button>
+    </div>
+</div>
 </section>
 <!-- MAIN -->
 <main class="container">
-    <!-- GENRES -->
-    <section id="genres">
-        <div class="section-title">
-            <h2>
-                جۆرەکان
-            </h2>
-        </div>
-        <div class="genres">
-            <div class="genre">
-                ئاکشن
-            </div>
-            <div class="genre">
-                سەرکێشی
-            </div>
-            <div class="genre">
-                فانتازی
-            </div>
-            <div class="genre">
-                دراما
-            </div>
-            <div class="genre">
-                ترسناک
-            </div>
-            <div class="genre">
-                کۆمیدی
-            </div>
-            <div class="genre">
-                زانستی-خەیاڵی
-            </div>
-        </div>
-    </section>
-    <!-- MOVIES -->
-    <section id="movies" style="margin-top:50px">
-        <div class="section-title">
-            <h2>
-                فیلمە باڵاکان
-            </h2>
-            <a href="#">
-                هەمووی ببینە ←
-            </a>
-        </div>
-        <div class="movies" id="movieList">
-            <!-- MOVIE 1 -->
-            <div class="movie" data-title="Interstellar">
-                <span class="rating">
-                    ★ 8.7
-                </span>
-                <img src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg">
-                <div class="movie-info">
-                    <h3>
-                        Interstellar
-                    </h3>
-                    <p>
-                        2014 • زانستی-خەیاڵی
-                    </p>
-                </div>
-            </div>
-            <!-- MOVIE 2 -->
-            <div class="movie" data-title="Dune">
-                <span class="rating">
-                    ★ 8.6
-                </span>
-                <img src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg">
-                <div class="movie-info">
-                    <h3>
-                        Dune: Part Two
-                    </h3>
-                    <p>
-                        2024 • فانتازی
-                    </p>
-                </div>
-            </div>
-            <!-- MOVIE 3 -->
-            <div class="movie" data-title="Avatar">
-                <span class="rating">
-                    ★ 7.8
-                </span>
-                <img src="https://image.tmdb.org/t/p/w500/kyeqWdyUXW608qlYkRqosgbbJyK.jpg">
-                <div class="movie-info">
-                    <h3>
-                        Avatar
-                    </h3>
-                    <p>
-                        2009 • سەرکێشی
-                    </p>
-                </div>
-            </div>
-            <!-- MOVIE 4 -->
-            <div class="movie" data-title="The Dark Knight">
-                <span class="rating">
-                    ★ 9.0
-                </span>
-                <img src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg">
-                <div class="movie-info">
-                    <h3>
-                        The Dark Knight
-                    </h3>
-                    <p>
-                        2008 • ئاکشن
-                    </p>
-                </div>
-            </div>
-            <!-- MOVIE 5 -->
-            <div class="movie" data-title="Gladiator">
-                <span class="rating">
-                    ★ 8.5
-                </span>
-                <img src="https://image.tmdb.org/t/p/w500/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg">
-                <div class="movie-info">
-                    <h3>
-                        Gladiator
-                    </h3>
-                    <p>
-                        2000 • دراما
-                    </p>
-                </div>
+<!-- GENRES -->
+<section id="genres">
+    <div class="section-title">
+        <h2>جۆرەکان</h2>
+    </div>
+    <div class="genres">
+        <div class="genre">ئاکشن</div>
+        <div class="genre">سەرکێشی</div>
+        <div class="genre">فانتازی</div>
+        <div class="genre">دراما</div>
+        <div class="genre">ترسناک</div>
+        <div class="genre">کۆمیدی</div>
+        <div class="genre">زانستی-خەیاڵی</div>
+    </div>
+</section>
+<!-- MOVIES -->
+<section id="movies" style="margin-top:50px">
+    <div class="section-title">
+        <h2>فیلمە باڵاکان</h2>
+        <a href="#">
+            هەمووی ببینە ←
+        </a>
+    </div>
+    <div class="movies" id="movieList">
+        <!-- MOVIE 1 -->
+        <div class="movie" data-title="Interstellar">
+            <span class="rating">
+                ★ 8.7
+            </span>
+            <img
+                src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
+                alt="Interstellar"
+            >
+            <div class="movie-info">
+                <h3>Interstellar</h3>
+                <p>2014 • زانستی-خەیاڵی</p>
             </div>
         </div>
-    </section>
+        <!-- MOVIE 2 -->
+        <div class="movie" data-title="Dune">
+            <span class="rating">
+                ★ 8.6
+            </span>
+            <img
+                src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
+                alt="Dune"
+            >
+            <div class="movie-info">
+                <h3>Dune: Part Two</h3>
+                <p>2024 • فانتازی</p>
+            </div>
+        </div>
+        <!-- MOVIE 3 -->
+        <div class="movie" data-title="Avatar">
+            <span class="rating">
+                ★ 7.8
+            </span>
+            <img
+                src="https://image.tmdb.org/t/p/w500/kyeqWdyUXW608qlYkRqosgbbJyK.jpg"
+                alt="Avatar"
+            >
+            <div class="movie-info">
+                <h3>Avatar</h3>
+                <p>2009 • سەرکێشی</p>
+            </div>
+        </div>
+        <!-- MOVIE 4 -->
+        <div class="movie" data-title="The Dark Knight">
+            <span class="rating">
+                ★ 9.0
+            </span>
+            <img
+                src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+                alt="The Dark Knight"
+            >
+            <div class="movie-info">
+                <h3>The Dark Knight</h3>
+                <p>2008 • ئاکشن</p>
+            </div>
+        </div>
+        <!-- MOVIE 5 -->
+        <div class="movie" data-title="Gladiator">
+            <span class="rating">
+                ★ 8.5
+            </span>
+            <img
+                src="https://image.tmdb.org/t/p/w500/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg"
+                alt="Gladiator"
+            >
+            <div class="movie-info">
+                <h3>Gladiator</h3>
+                <p>2000 • دراما</p>
+            </div>
+        </div>
+        <!-- YOUR MOVIE -->
+        <div
+            class="movie"
+            data-title="گدۆو چاکی"
+            onclick="openMovie()"
+        >
+            <span class="rating">
+                ★ 8.5
+            </span>
+            <img
+                src="IMG_0505.jpeg"
+                alt="گدۆو چاکی"
+            >
+            <div class="movie-info">
+                <h3>گدۆو چاکی</h3>
+                <p>2026 • فیلم</p>
+            </div>
+        </div>
+    </div>
+</section>
 </main>
+<!-- VIDEO PLAYER -->
+<div class="video-modal" id="videoModal">
+<div class="video-box">
+    <div class="video-header">
+        <h2>گدۆو چاکی 🎬</h2>
+        <button
+            class="close-video"
+            onclick="closeMovie()"
+        >
+            ✕
+        </button>
+    </div>
+    <video
+        id="moviePlayer"
+        controls
+        playsinline
+        preload="metadata"
+    >
+        <source
+            src="5882162068501473992.MP4"
+            type="video/mp4"
+        >
+        وێبگەڕەکەت پشتگیری لەم ڤیدیۆیە ناکات.
+    </video>
+</div>
+</div>
+<!-- FOOTER -->
 <footer>
     © 2026 NOVA MOVIES
     <br><br>
@@ -480,8 +546,22 @@ function searchMovies(){
         }
     });
 }
-function watchMovie(){
-    alert("پلەیری فیلم بە زوویی لە NOVA MOVIES زیاد دەکرێت 🎬");
+function openMovie(){
+    let modal =
+        document.getElementById("videoModal");
+    let player =
+        document.getElementById("moviePlayer");
+    modal.style.display = "flex";
+    player.play().catch(() => {});
+}
+function closeMovie(){
+    let modal =
+        document.getElementById("videoModal");
+    let player =
+        document.getElementById("moviePlayer");
+    player.pause();
+    player.currentTime = 0;
+    modal.style.display = "none";
 }
 </script>
 </body>
